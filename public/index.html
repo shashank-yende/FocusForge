@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FocusForge</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="login-view">
+    <div class="login-left">
+      <div class="login-logo">
+        <img src="logo.png" alt="FocusForge Logo"
+          style="width: 28px; height: 28px; border-radius: 6px; object-fit: cover;">
+        FocusForge
+      </div>
+      <div>
+        <h1 class="login-hero">Empower Your<br>Learning Experience.</h1>
+        <p class="login-subtext">Discover the smarter way to study. Our platform provides the insights, structure, and
+          motivation you need to excel in every class.</p>
+      </div>
+      <div class="login-footer"></div>
+    </div>
+    <div class="login-right">
+      <div class="login-card">
+        <h2 class="login-card-title">FocusForge</h2>
+        <p class="login-card-sub">Welcome back! Please login to your account.</p>
+        <form onsubmit="handleLogin(event)">
+          <div>
+            <input type="email" class="login-input" placeholder="Email Address" required>
+          </div>
+          <div>
+            <input type="password" class="login-input" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn btn-primary"
+            style="width:100%; justify-content:center; padding:16px; font-size:15px; font-weight:600;">Sign In</button>
+        </form>
+        <div class="login-divider"><span>OR</span></div>
+        <button class="btn-google" onclick="handleGoogleAuth(event)">
+          <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Continue with Google
+        </button>
+        <div class="login-card-footer">Don't have an account? <span onclick="toggleAuthView('signup')">Create one</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="signup-view" style="display:none;">
+    <div class="login-left">
+      <div class="login-logo">
+        <img src="logo.png" alt="FocusForge Logo"
+          style="width: 28px; height: 28px; border-radius: 6px; object-fit: cover;">
+        FocusForge
+      </div>
+      <div>
+        <h1 class="login-hero">Start Your<br>Journey Today.</h1>
+        <p class="login-subtext">Build better habits, organize your tasks, and achieve your academic goals with
+          FocusForge. Your success story begins here.</p>
+      </div>
+      <div class="login-footer"></div>
+    </div>
+    <div class="login-right">
+      <div class="login-card">
+        <h2 class="login-card-title">FocusForge</h2>
+        <p class="login-card-sub">Create your account to start planning.</p>
+        <form onsubmit="handleSignup(event)">
+          <div>
+            <input type="text" class="login-input" placeholder="Full Name" required>
+          </div>
+          <div>
+            <input type="email" class="login-input" placeholder="Email Address" required>
+          </div>
+          <div>
+            <input type="password" class="login-input" placeholder="Password (min 8 chars)" minlength="8" required>
+          </div>
+          <button type="submit" class="btn btn-primary"
+            style="width:100%; justify-content:center; padding:16px; font-size:15px; font-weight:600;">Create
+            Account</button>
+        </form>
+        <div class="login-divider"><span>OR</span></div>
+        <button class="btn-google" onclick="handleGoogleAuth(event)">
+          <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg>
+          Continue with Google
+        </button>
+        <div class="login-card-footer">Already have an account? <span onclick="toggleAuthView('login')">Sign In</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app" id="dashboard-view" style="display:none;">
+
+    <nav class="sidebar" id="sidebar">
+      <div class="logo">
+        <div class="logo-icon" style="background: transparent; box-shadow: none;">
+          <img src="logo.png" alt="FocusForge Logo"
+            style="width: 36px; height: 36px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 12px rgba(124,58,237,0.3);">
+        </div>
+        <div class="logo-text">Focus<span>Forge</span></div>
+      </div>
+
+      <div class="nav-section">Main</div>
+      <div class="nav-item active" onclick="nav('dashboard')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="nav('compilers')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+        Online Compilers
+      </div>
+      <div class="nav-item" onclick="nav('materials')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        </svg>
+        Resources
+      </div>
+      <div class="nav-item" onclick="nav('tasks')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 11 12 14 22 4" />
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+        </svg>
+        Assignments
+      </div>
+      <div class="nav-item" onclick="nav('exams')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <polyline points="10 9 9 9 8 9" />
+        </svg>
+        Exams
+      </div>
+      <div class="nav-item" onclick="nav('timetable')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="3" y1="15" x2="21" y2="15" />
+          <line x1="9" y1="3" x2="9" y2="21" />
+          <line x1="15" y1="3" x2="15" y2="21" />
+        </svg>
+        Timetable
+      </div>
+
+      <div class="nav-section">Focus</div>
+      <div class="nav-item" onclick="nav('focus')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        Focus Session
+      </div>
+      <div class="nav-item" onclick="nav('analytics')">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg>
+        Analytics
+      </div>
+
+      <div class="nav-item" onclick="toggleTheme(event)">
+        <svg id="theme-icon" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <span id="theme-text">Dark Mode</span>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div
+          style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--radius-sm);background:var(--bg3);border:1px solid var(--border);cursor:pointer;transition:all 0.2s;margin-bottom:12px;"
+          onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--surface)';"
+          onmouseout="this.style.borderColor='var(--border)'; this.style.background='var(--bg3)';">
+          <div id="profile-badge"
+            style="width:36px;height:36px;border-radius:50%;background:rgba(124, 58, 237, 0.25);color:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path
+                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm0 10.9c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+          </div>
+          <div style="flex:1;overflow:hidden;text-align:left;">
+            <div id="profile-name"
+              style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;line-height:1.2;">
+              John Doe</div>
+            <div id="profile-email"
+              style="font-size:11px;font-weight:500;color:var(--muted);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;margin-top:2px;">
+              john.doe@example.com</div>
+          </div>
+        </div>
+
+        <button class="logout-btn" onclick="confirmLogout()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          Log Out
+        </button>
+      </div>
+    </nav>
+
+    <div class="main">
+
+      <div id="idle-banner">
+        <span class="pulse-dot"></span>
+        <span id="idle-banner-text">No activity detected — are you still coding?</span>
+        <span style="margin-left:auto;font-family:var(--font-mono);font-size:13px" id="idle-banner-timer"></span>
+        <button class="btn btn-sm" onclick="dismissIdle()"
+          style="margin-left:12px;background:var(--bg2);color:var(--text);border:none">I'm here</button>
+      </div>
+
+      <div class="topbar">
+        <button class="btn-icon btn-sm" onclick="document.getElementById('sidebar').classList.toggle('open')"
+          id="menu-btn" style="border:none; background:transparent; color:var(--muted);">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="page-title" id="page-title">Dashboard</div>
+        <div class="topbar-actions">
+          <div
+            style="display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--accent-glow);border:1px solid var(--accent);border-radius:20px;color:var(--accent);box-shadow: 0 2px 8px var(--accent-glow);"
+            title="Daily Streak">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="flex-shrink: 0;">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.353.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" />
+            </svg>
+            <span class="streak-num"
+              style="font-size:14px; font-weight:800; font-family:var(--font-head); line-height:1;">1</span>
+          </div>
+          <div
+            style="display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;font-family:var(--font-head);font-weight:600"
+            id="topbar-focus">
+            <span class="pulse-dot" style="color:var(--green)"></span>
+            Focus: <span id="topbar-pct" style="color:var(--green)">100%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+
+        <div class="page active" id="page-dashboard">
+          <div class="welcome-banner">
+            <div>
+              <div class="welcome-title">Welcome to FocusForge 👋</div>
+              <div class="welcome-sub">Let's get your study schedule organized.</div>
+            </div>
+            <div class="streak-badge">
+              <span class="streak-fire" style="display:flex;align-items:center;justify-content:center;">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="white" style="flex-shrink: 0;">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.353.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" />
+                </svg>
+              </span>
+              <div>
+                <div class="streak-num">1</div>
+                <div class="streak-label">day streak</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="stat-card" style="--c:var(--accent);--ic:var(--accent-glow)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg></div>
+              <div class="stat-label">Today's Classes</div>
+              <div class="stat-value" id="stat-today-classes">0</div>
+              <div class="stat-sub" id="stat-today-sub">Add classes to timetable</div>
+            </div>
+            <div class="stat-card" style="--c:var(--green);--ic:var(--green-bg)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></div>
+              <div class="stat-label">Assignments Done</div>
+              <div class="stat-value" id="stat-assignments">0<span style="font-size:16px;color:var(--muted)">/0</span>
+              </div>
+              <div class="stat-sub" id="stat-assignments-sub">No upcoming deadlines</div>
+            </div>
+            <div class="stat-card" style="--c:var(--amber);--ic:var(--amber-bg)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg></div>
+              <div class="stat-label">TOTAL EXAMS</div>
+              <div class="stat-value" id="stat-exams">0</div>
+              <div class="stat-sub" id="stat-exams-sub">No exams scheduled</div>
+            </div>
+          </div>
+
+          <div class="three-col">
+            <div>
+              <div class="card card-sm" style="display:flex; flex-direction:column; height: 100%;">
+                <div class="section-header">
+                  <div class="section-title">Today's Schedule</div>
+                  <button class="btn btn-sm btn-primary" onclick="nav('timetable')"
+                    style="padding: 6px 12px; font-size: 12px;">View all →</button>
+                </div>
+                <div id="today-schedule">
+                  <div
+                    style="color:var(--muted); padding:20px; text-align:center; background:var(--bg3); border:1px dashed var(--border2); border-radius:var(--radius-sm);">
+                    No classes scheduled for today.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card card-sm" style="display:flex; flex-direction:column; height: 100%;">
+                <div class="section-header">
+                  <div class="section-title">Pending Assignments</div>
+                  <button class="btn btn-sm btn-primary" onclick="nav('tasks')"
+                    style="padding: 6px 12px; font-size: 12px;">View all →</button>
+                </div>
+                <div class="task-list" id="dashboard-task-list">
+                  <div
+                    style="color:var(--muted); padding:20px; text-align:center; background:var(--bg3); border:1px dashed var(--border2); border-radius:var(--radius-sm);">
+                    No pending assignments.</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="card card-sm" style="display:flex; flex-direction:column; max-height: 400px; height: 100%;">
+                <div class="section-header" id="active-subj-header">
+                  <div class="section-title">Active Subjects</div>
+                  <button class="btn btn-sm btn-primary" onclick="toggleInlineSubjectAdd(true)"
+                    style="padding: 6px 12px; font-size: 12px;">+ Add Subject</button>
+                </div>
+
+                <div id="inline-add-subject-form"
+                  style="display:none; margin-bottom: 16px; padding: 16px; background: var(--bg3); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                  <div style="font-size:12px; font-weight:600; color:var(--text); margin-bottom:8px;">Create New Subject
+                  </div>
+                  <input type="text" id="inline-subject-input" class="input" placeholder="e.g., Data Structures"
+                    style="margin-bottom: 12px; font-size: 13px; padding: 10px 12px;" />
+                  <div style="display:flex; gap: 8px; justify-content: flex-end;">
+                    <button class="btn btn-sm" onclick="toggleInlineSubjectAdd(false)"
+                      style="background:var(--bg); border-color:var(--border2); color:var(--text);">Cancel</button>
+                    <button class="btn btn-sm btn-primary" onclick="addInlineSubject()">Add item</button>
+                  </div>
+                  <div id="inline-subject-error" class="error-text" style="margin-top:8px;"></div>
+                </div>
+
+                <div id="dashboard-subjects-list"
+                  style="overflow-y:auto; flex:1; display:flex; flex-direction:column; gap: 8px; padding-right: 4px;">
+                  <div
+                    style="color:var(--muted); padding:20px; text-align:center; background:var(--bg3); border:1px dashed var(--border2); border-radius:var(--radius-sm);">
+                    No subjects added.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-compilers">
+
+          <div class="compiler-header">
+            <div style="text-align: left;">
+              <h2 class="compiler-header-title">Online Compilers</h2>
+              <p class="compiler-header-sub">Quickly test and run your code directly in the browser.</p>
+            </div>
+            <div class="compiler-search-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input type="text" class="compiler-search" placeholder="Search for a language..."
+                oninput="filterCompilers(this.value)" />
+            </div>
+          </div>
+
+          <div class="compiler-grid">
+            <div class="compiler-card" style="--hover-color: #387eb8; --glow-color: rgba(56, 126, 184, 0.15)"
+              onclick="window.open('https://www.programiz.com/python-programming/online-compiler/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Data Science & AI</div>
+              <span class="compiler-icon">
+                <svg viewBox="0 0 110 110" width="48" height="48" style="flex-shrink: 0;">
+                  <path fill="#387eb8"
+                    d="M53.8,4.2C25.4,4.2,21.8,16.5,21.8,16.5l0,12.8h32.6v4.6H20.4C8.7,33.9,4.4,43.3,4.4,55c0,13.6,3.8,22,14.4,22h7.6V63.5 c0-7.3,6-13.3,13.3-13.3h22.6c3.6,0,6.6-3,6.6-6.6V20.2C68.9,9.4,59.9,4.2,53.8,4.2z M39.3,13.5c2.6,0,4.7,2.1,4.7,4.7 c0,2.6-2.1,4.7-4.7,4.7c-2.6,0-4.7-2.1-4.7-4.7C34.6,15.6,36.7,13.5,39.3,13.5z" />
+                  <path fill="#ffe052"
+                    d="M56.2,105.8c28.4,0,32-12.3,32-12.3V80.7H55.6v-4.6 h34c11.7,0,16-9.4,16-21.1c0-13.6-3.8-22-14.4-22h-7.6v13.5c0,7.3-6,13.3-13.3,13.3H47.7c-3.6,0-6.6,3-6.6,6.6v23.4 C41.1,100.6,50.1,105.8,56.2,105.8z M70.7,96.5c-2.6,0-4.7-2.1-4.7-4.7c0-2.6,2.1-4.7,4.7-4.7c2.6,0,4.7,2.1,4.7,4.7 C75.4,94.4,73.3,96.5,70.7,96.5z" />
+                </svg>
+              </span>
+              <div class="compiler-name">Python</div>
+              <div class="compiler-desc">The most popular language for beginners, scripting, and machine learning.</div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.15)"
+              onclick="window.open('https://www.programiz.com/java-programming/online-compiler/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Enterprise Backend</div>
+              <span class="compiler-icon lang-logo-text logo-java" style="color: #ef4444;">JAVA</span>
+              <div class="compiler-name">Java</div>
+              <div class="compiler-desc">Object-oriented programming standard for large-scale enterprise applications.
+              </div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #eab308; --glow-color: rgba(234, 179, 8, 0.15)"
+              onclick="window.open('https://www.programiz.com/javascript/online-compiler/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Full-Stack Web</div>
+              <span class="compiler-icon lang-logo-text logo-js" style="color: #eab308;">JS</span>
+              <div class="compiler-name">JavaScript</div>
+              <div class="compiler-desc">The language of the web. Essential for front-end and Node.js backend logic.
+              </div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #3b82f6; --glow-color: rgba(59, 130, 246, 0.15)"
+              onclick="window.open('https://www.programiz.com/cpp-programming/online-compiler/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">High Performance</div>
+              <span class="compiler-icon lang-logo-text logo-cpp" style="color: #3b82f6;">C++</span>
+              <div class="compiler-name">C++</div>
+              <div class="compiler-desc">High-performance systems, game engines, and competitive programming.</div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #60a5fa; --glow-color: rgba(96, 165, 250, 0.15)"
+              onclick="window.open('https://www.programiz.com/c-programming/online-compiler/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Embedded Systems</div>
+              <span class="compiler-icon lang-logo-text logo-c" style="color: #60a5fa;">C</span>
+              <div class="compiler-name">C Programming</div>
+              <div class="compiler-desc">The foundational language for operating systems and low-level memory control.
+              </div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #a855f7; --glow-color: rgba(168, 85, 247, 0.15)"
+              onclick="window.open('https://www.onlinegdb.com/online_csharp_compiler', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Game Dev & .NET</div>
+              <span class="compiler-icon lang-logo-text logo-cs" style="color: #a855f7;">C#</span>
+              <div class="compiler-name">C#</div>
+              <div class="compiler-desc">The primary language for Unity game development and Windows applications.</div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #06b6d4; --glow-color: rgba(6, 182, 212, 0.15)"
+              onclick="window.open('https://go.dev/play/', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Cloud Infrastructure</div>
+              <span class="compiler-icon lang-logo-text logo-go" style="color: #06b6d4;">GO</span>
+              <div class="compiler-name">Go (Golang)</div>
+              <div class="compiler-desc">Built by Google for scalable backends, microservices, and concurrent
+                processing.</div>
+            </div>
+
+            <div class="compiler-card" style="--hover-color: #f97316; --glow-color: rgba(249, 115, 22, 0.15)"
+              onclick="window.open('https://onecompiler.com/mysql', '_blank')">
+              <svg class="compiler-bookmark" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+              </svg>
+              <div class="compiler-tag">Database Query</div>
+              <span class="compiler-icon lang-logo-text logo-sql" style="color: #f97316;">SQL</span>
+              <div class="compiler-name">MySQL</div>
+              <div class="compiler-desc">Test relational database queries, table creation, and standard SQL syntax.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-materials">
+          <div style="margin-bottom: 32px;">
+            <h2
+              style="font-family: var(--font-head); font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: -0.5px;">
+              Resources & Notes</h2>
+            <p style="color: var(--muted); font-size: 15px;">Manage notes and saved links for your subjects.</p>
+          </div>
+
+          <div class="form-group" style="max-width: 400px; margin-bottom: 32px;">
+            <label class="form-label">Select Subject</label>
+            <select class="input" id="resource-subject-select" onchange="loadSubjectResources()">
+              <option value="">Select a subject...</option>
+            </select>
+          </div>
+
+          <div class="two-col-equal">
+            <div class="card">
+              <h3
+                style="font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px;">
+                Quick Notes</h3>
+              <textarea id="quick-notes-area" class="input"
+                style="flex:1; resize: vertical; margin-bottom: 20px; padding: 16px; background: var(--bg);"
+                placeholder="Type important formulas, reminders, or study notes here..." disabled></textarea>
+              <button class="btn btn-primary"
+                style="width: 100%; justify-content: center; padding: 14px; font-size: 15px; margin-top:auto;"
+                onclick="saveQuickNotes()" id="save-notes-btn" disabled>Save Notes</button>
+            </div>
+
+            <div class="card">
+              <h3
+                style="font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px;">
+                Saved Links</h3>
+              <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+                <input type="text" id="link-title" class="input" placeholder="Link Title or Chap..."
+                  style="flex: 1; min-width: 120px; background: var(--bg);" disabled>
+                <input type="url" id="link-url" class="input" placeholder="Paste link here..."
+                  style="flex: 1.5; min-width: 150px; background: var(--bg);" disabled>
+                <button class="btn btn-primary" onclick="addSavedLink()" id="add-link-btn" disabled
+                  style="padding: 10px 24px;">Add</button>
+              </div>
+              <div id="saved-links-container"
+                style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; color: var(--muted); text-align: center; padding: 20px 0; font-size: 14px; background: var(--bg); border-radius: var(--radius-sm); border: 1px dashed var(--border2); min-height: 100px;">
+                Select a subject to view links.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-tasks">
+          <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm task-filter-btn" data-filter="all"
+              onclick="setTaskFilter('all')">All</button>
+            <button class="btn btn-sm task-filter-btn" data-filter="today"
+              onclick="setTaskFilter('today')">Today</button>
+            <button class="btn btn-sm task-filter-btn" data-filter="upcoming"
+              onclick="setTaskFilter('upcoming')">Upcoming</button>
+            <button class="btn btn-sm task-filter-btn" data-filter="overdue"
+              onclick="setTaskFilter('overdue')">Overdue</button>
+            <button class="btn btn-sm btn-primary" style="margin-left:auto;" onclick="openAddModal('task')">+ Add
+              Assignment</button>
+          </div>
+          <div class="task-list" id="full-task-list"></div>
+        </div>
+
+        <div class="page" id="page-exams">
+          <div class="two-col">
+            <div>
+              <div class="section-header">
+                <div class="section-title">Upcoming Exams</div>
+                <button class="btn btn-sm btn-primary" onclick="openAddModal('exam')">+ Add Exam</button>
+              </div>
+              <div id="exam-list"></div>
+            </div>
+            <div class="card card-sm">
+              <div class="section-title" style="margin-bottom:20px">Syllabus Coverage</div>
+              <div id="subject-coverage" style="display:flex; flex-direction:column; gap:20px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-timetable">
+          <div class="card">
+            <div class="section-header">
+              <div class="section-title">Timetable & Subjects</div>
+              <div>
+                <button class="btn btn-sm btn-primary" onclick="openAddModal('class')">+ Add Class</button>
+              </div>
+            </div>
+            <div class="timetable" id="full-timetable" style="margin-top:16px"></div>
+          </div>
+        </div>
+
+        <div class="page" id="page-focus">
+          <div class="two-col">
+            <div>
+              <div class="card" style="position:relative; text-align:center; padding:40px 32px">
+                <button class="btn-icon" onclick="openPomodoroSettings()"
+                  style="position:absolute; top:20px; right:20px; border:none; background:transparent; color:var(--muted); padding:8px; z-index: 10;">
+                  <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" style="display:block;">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                  </svg>
+                </button>
+                <div
+                  style="font-size:12px;font-family:var(--font-head);font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.1em">
+                  Current Session</div>
+                <div
+                  style="font-family:var(--font-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:24px"
+                  id="focus-subject-label">Subject Not Selected</div>
+                <div id="pom-phase-label"
+                  style="font-size:14px;font-weight:700;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.1em">
+                  Focus Time</div>
+                <div
+                  style="font-family:var(--font-head);font-size:72px;font-weight:800;color:var(--text);line-height:1;margin-bottom:32px;letter-spacing:-2px"
+                  id="focus-timer">30:00</div>
+                <div style="display:flex;gap:12px;justify-content:center;margin-bottom:28px">
+                  <button class="btn btn-primary" id="focus-start-btn" onclick="toggleFocusTimer()"
+                    style="padding:12px 24px; min-width:140px; justify-content:center;">▶ Start Focus</button>
+                  <button class="btn" onclick="resetFocusTimer()" style="padding:12px 20px;">↺ Reset</button>
+                </div>
+
+                <div
+                  style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;text-align:left">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                    <span
+                      style="font-size:12px;font-weight:700;color:var(--muted);font-family:var(--font-head);text-transform:uppercase;letter-spacing:0.05em">Idle
+                      Tolerance</span>
+                    <span
+                      style="font-size:11px; font-weight:600; color:var(--amber); background:var(--amber-bg); padding:4px 8px; border-radius:12px; font-family:var(--font-mono);"
+                      id="warn-display">Warns at 22s</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:12px">
+                    <div style="display:flex;align-items:center;gap:12px">
+                      <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--muted2)" stroke-width="2"
+                        fill="none" style="flex-shrink:0;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      <input type="range" min="30" max="900" value="30" step="15" id="alert-slider"
+                        oninput="updateAlertSlider(this.value)"
+                        style="flex:1;accent-color:var(--red); cursor:pointer;" />
+                      <span
+                        style="font-size:13px;font-family:var(--font-mono);font-weight:600;color:var(--red);min-width:40px;text-align:right;"
+                        id="alert-slider-val">30s</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="stat-grid"
+                style="margin-top:20px; margin-bottom: 0; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+                <div class="card card-sm" style="text-align:center">
+                  <div
+                    style="font-size:11px;font-weight:600;color:var(--muted);font-family:var(--font-head);margin-bottom:6px;text-transform:uppercase">
+                    Active time</div>
+                  <div style="font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--green)"
+                    id="f-active-time">0:00</div>
+                </div>
+                <div class="card card-sm" style="text-align:center">
+                  <div
+                    style="font-size:11px;font-weight:600;color:var(--muted);font-family:var(--font-head);margin-bottom:6px;text-transform:uppercase">
+                    Idle alerts</div>
+                  <div style="font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--amber)"
+                    id="f-idle-count">0</div>
+                </div>
+                <div class="card card-sm" style="text-align:center">
+                  <div
+                    style="font-size:11px;font-weight:600;color:var(--muted);font-family:var(--font-head);margin-bottom:6px;text-transform:uppercase">
+                    Focus score</div>
+                  <div style="font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--purple)"
+                    id="f-focus-score">100%</div>
+                </div>
+                <div class="card card-sm" style="text-align:center">
+                  <div
+                    style="font-size:11px;font-weight:600;color:var(--muted);font-family:var(--font-head);margin-bottom:6px;text-transform:uppercase">
+                    Sessions Today</div>
+                  <div style="font-family:var(--font-head);font-size:24px;font-weight:700;color:var(--accent)"
+                    id="f-sessions-today">0</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <div class="card card-sm" id="status-card">
+                <div
+                  style="font-size:13px;font-weight:600;font-family:var(--font-head);color:var(--text);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em">
+                  Activity monitor</div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg3);border-radius:var(--radius-sm);border:1px solid var(--border)"
+                  id="status-indicator">
+                  <span class="pulse-dot" id="status-dot" style="color:var(--muted)"></span>
+                  <span style="font-size:14px;font-weight:500;color:var(--text)" id="status-msg">Timer not
+                    started</span>
+                  <span
+                    style="margin-left:auto;font-size:12px;font-family:var(--font-mono);font-weight:500;color:var(--muted)"
+                    id="status-countdown"></span>
+                </div>
+                <div class="focus-ring" style="margin-top:24px">
+                  <svg width="140" height="140" viewBox="0 0 140 140">
+                    <circle cx="70" cy="70" r="60" fill="none" stroke="var(--bg)" stroke-width="10" />
+                    <circle cx="70" cy="70" r="60" fill="none" stroke="var(--purple)" stroke-width="10"
+                      stroke-linecap="round" stroke-dasharray="377" stroke-dashoffset="0" id="focus-ring-circle"
+                      style="transition:stroke-dashoffset 1s ease" />
+                  </svg>
+                  <div class="focus-ring-label">
+                    <div class="focus-pct" id="focus-ring-pct">100%</div>
+                    <div class="focus-sub">SCORE</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card card-sm">
+                <div
+                  style="font-size:13px;font-weight:600;font-family:var(--font-head);color:var(--text);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em">
+                  Activity log</div>
+                <div class="log-list" id="activity-log">
+                  <div class="log-entry log-active">
+                    <div class="log-dot"></div>
+                    <span class="log-time" id="log-start-time">--:--</span>
+                    <span class="log-msg">Session started</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-analytics">
+
+
+          <div class="stat-grid"
+            style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px;">
+            <div class="stat-card" style="--c:var(--accent);--ic:var(--accent-glow)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg></div>
+              <div class="stat-label">Study Hours</div>
+              <div class="stat-value" id="analytic-study-hours">0h 0m</div>
+              <div class="stat-sub">Track sessions to see stats</div>
+            </div>
+            <div class="stat-card" style="--c:var(--green);--ic:var(--green-bg)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg></div>
+              <div class="stat-label">Average focus score</div>
+              <div class="stat-value" id="analytic-focus-score">0%</div>
+              <div class="stat-sub">Achieved this week</div>
+            </div>
+            <div class="stat-card" style="--c:var(--amber);--ic:var(--amber-bg)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2.5">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg></div>
+              <div class="stat-label">Idle events</div>
+              <div class="stat-value" id="analytic-idle-events">0</div>
+              <div class="stat-sub">Recorded this week</div>
+            </div>
+            <div class="stat-card" style="--c:var(--purple);--ic:var(--purple-bg)">
+              <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2.5">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                </svg></div>
+              <div class="stat-label">Total Sessions</div>
+              <div class="stat-value" id="analytic-total-sessions">0</div>
+              <div class="stat-sub">Completed this week</div>
+            </div>
+          </div>
+
+          <div class="analytics-grid">
+            <div class="card">
+              <div class="section-title" style="margin-bottom:24px">Daily study hours (this week)</div>
+              <div style="display:flex;align-items:flex-end;gap:12px;height:220px;padding-bottom:8px">
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-sun"></span>
+                  <div
+                    style="width:100%;border-radius:6px 6px 0 0;background:var(--red);opacity:0.8;transition:height 0.3s;"
+                    id="bar-sun"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Sun</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-mon"></span>
+                  <div
+                    style="width:100%;border-radius:6px 6px 0 0;background:var(--accent);opacity:0.85;transition:height 0.3s;"
+                    id="bar-mon"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Mon</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-tue"></span>
+                  <div
+                    style="width:100%;border-radius:6px 6px 0 0;background:var(--accent);opacity:0.65;transition:height 0.3s;"
+                    id="bar-tue"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Tue</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-wed"></span>
+                  <div style="width:100%;border-radius:6px 6px 0 0;background:var(--green);transition:height 0.3s;"
+                    id="bar-wed"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Wed</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-thu"></span>
+                  <div style="width:100%;border-radius:6px 6px 0 0;background:var(--amber);transition:height 0.3s;"
+                    id="bar-thu"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Thu</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-fri"></span>
+                  <div
+                    style="width:100%;border-radius:6px 6px 0 0;background:var(--accent);opacity:0.75;transition:height 0.3s;"
+                    id="bar-fri"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Fri</span>
+                </div>
+                <div
+                  style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;height:100%;justify-content:flex-end;">
+                  <span style="font-size:11px;font-weight:600;color:var(--text);display:none;" id="label-sat"></span>
+                  <div style="width:100%;border-radius:6px 6px 0 0;background:var(--green);transition:height 0.3s;"
+                    id="bar-sat"></div>
+                  <span
+                    style="font-size:12px;font-weight:500;color:var(--muted);font-family:var(--font-mono)">Sat</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="section-title" style="margin-bottom:20px">Subject breakdown</div>
+              <div style="display:flex;flex-direction:column;gap:16px" id="subject-breakdown"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="idle-modal" style="display:none">
+    <div class="modal-box">
+      <span class="modal-icon">😴</span>
+      <div class="modal-title">Still studying?</div>
+      <div class="modal-msg">No activity detected for <strong id="modal-idle-secs">30s</strong>. You must confirm you're
+        here to resume tracking.</div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="dismissIdle()" style="width:100%;justify-content:center;padding:14px">✓
+          I'm back, continue session</button>
+        <button class="btn" onclick="dismissIdle()"
+          style="width:100%;justify-content:center;color:var(--text);padding:14px;background:var(--bg)">Take a
+          break</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="logout-modal">
+    <div class="modal-box" style="max-width:380px;text-align:center;">
+      <span class="modal-icon">👋</span>
+      <div class="modal-title">Log out?</div>
+      <div class="modal-msg">You're ending your session. Your progress has been saved.</div>
+      <div class="modal-actions">
+        <button class="btn" onclick="document.getElementById('logout-modal').style.display='none'"
+          style="width:100%;justify-content:center;padding:13px;color:var(--text);background:var(--bg3);border-color:var(--border2);">Cancel</button>
+        <button class="btn" onclick="doLogout()"
+          style="width:100%;justify-content:center;padding:13px;background:var(--red);border-color:var(--red);color:white;">Log
+          Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal-box">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+        <h3 class="modal-title" id="modal-main-title" style="font-size:20px;margin:0">Add New Item</h3>
+        <button class="btn btn-sm" onclick="closeAddModal()"
+          style="border:none;background:var(--bg3);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;padding:0;color:var(--muted)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="form-group" id="title-group">
+        <label class="form-label" id="label-title">Title</label>
+        <input class="input" placeholder="e.g., Implement LRU Cache" id="add-title" />
+      </div>
+
+      <div class="form-group" id="subject-group">
+        <label class="form-label">Subject</label>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <select class="input" id="add-subject" onchange="handleSubjectChange()" style="flex:1;">
+          </select>
+        </div>
+        <input class="input" type="text" id="new-subject-input" placeholder="Type new subject name..."
+          style="display:none; margin-top: 8px;" />
+      </div>
+
+      <div class="form-group" id="date-container">
+        <label class="form-label" id="dynamic-label">Due Date</label>
+        <input class="input" type="date" id="add-dynamic-input" />
+      </div>
+      <div class="form-row" id="class-time-container" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">Day</label>
+          <select class="input" id="add-class-day">
+            <option>Sun</option>
+            <option>Mon</option>
+            <option>Tue</option>
+            <option>Wed</option>
+            <option>Thu</option>
+            <option>Fri</option>
+            <option>Sat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Time Slot</label>
+          <select class="input" id="add-class-time">
+            <option value="0">08:00 - 10:00</option>
+            <option value="1">10:00 - 12:00</option>
+            <option value="2">12:00 - 14:00</option>
+            <option value="3">14:00 - 16:00</option>
+            <option value="4">16:00 - 18:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" id="priority-container">
+        <label class="form-label">Priority</label>
+        <select class="input" id="add-priority">
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select>
+      </div>
+      <div id="add-modal-error" class="error-text"></div>
+      <div
+        style="display:flex;gap:12px;justify-content:flex-end;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
+        <button class="btn" onclick="closeAddModal()"
+          style="background:var(--bg);border-color:var(--border2);color:var(--text)">Cancel</button>
+        <button class="btn btn-primary" id="modal-submit-btn" onclick="addItem()">Add item</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="pomodoro-settings-modal">
+    <div class="modal-box" style="max-width: 500px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+        <h3 class="modal-title" style="font-size:20px;margin:0">Pomodoro Setting</h3>
+        <button class="btn btn-sm" onclick="closePomodoroSettings()"
+          style="border:none;background:var(--bg3);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;padding:0;color:var(--muted)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Total Focus Time</label>
+          <select id="set-focus-time" class="input">
+            <option value="15">15 Minutes</option>
+            <option value="30" selected>30 Minutes</option>
+            <option value="45">45 Minutes</option>
+            <option value="60">60 Minutes</option>
+            <option value="75">75 Minutes</option>
+            <option value="90">90 Minutes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Focus Subject</label>
+          <select id="set-focus-subject" class="input">
+          </select>
+          <div id="pomodoro-settings-error" class="error-text">Please select a Focus Subject.</div>
+        </div>
+      </div>
+      <div class="form-group"
+        style="display:flex; justify-content:space-between; align-items:center; background:var(--bg3); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border);">
+        <label class="form-label" style="margin:0; font-size:14px;">Alert Sound</label>
+        <label class="switch">
+          <input type="checkbox" id="set-alert-sound" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="form-group"
+        style="display:flex; justify-content:space-between; align-items:center; background:var(--bg3); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border); margin-top:12px;">
+        <div>
+          <label class="form-label" style="margin:0; font-size:14px;">Strict Mode</label>
+          <div style="font-size:11px; color:var(--muted); margin-top:2px; font-weight:500;">Aggressive idle tracking if
+            you switch tabs</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="set-strict-mode">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;"
+          onclick="savePomodoroSettings()">Save</button>
+        <button class="btn"
+          style="width:100%;justify-content:center;padding:12px;color:var(--text);border-color:var(--border2);background:var(--bg)"
+          onclick="closePomodoroSettings()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="break-overlay">
+    <div
+      style="font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; opacity: 0.8;"
+      id="break-overlay-title">Rest & Recharge</div>
+    <div class="break-timer-large" id="break-overlay-timer">05:00</div>
+    <div class="break-msg" id="break-overlay-msg">Time for a breather.</div>
+    <button class="btn btn-primary" id="break-overlay-btn" onclick="skipBreak()"
+      style="padding: 14px 40px; border-radius: 30px; font-size: 16px; font-weight: 600; box-shadow: 0 4px 14px rgba(124,58,237,0.4);">Skip
+      Break & Continue</button>
+  </div>
+
+  <div class="modal-overlay" id="custom-confirm-modal" style="z-index: 10000;">
+    <div class="modal-box" style="max-width:380px;text-align:center;">
+      <div class="modal-title" id="custom-confirm-title">Confirm</div>
+      <div class="modal-msg" id="custom-confirm-msg">Are you sure?</div>
+      <div class="modal-actions" style="flex-direction:row; gap:12px;">
+        <button class="btn" id="custom-confirm-cancel"
+          style="flex:1;justify-content:center;background:var(--bg3);border-color:var(--border2);color:var(--text);">Cancel</button>
+        <button class="btn btn-primary" id="custom-confirm-ok"
+          style="flex:1;justify-content:center;background:var(--red);border-color:var(--red);">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="custom-alert-modal" style="z-index: 10000;">
+    <div class="modal-box" style="max-width:380px;text-align:center;">
+      <div class="modal-title" id="custom-alert-title">Alert</div>
+      <div class="modal-msg" id="custom-alert-msg">Message</div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('custom-alert-modal').classList.remove('show')"
+          style="width:100%;justify-content:center;">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+  <!-- Main Script File -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page Not Found — FocusForge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #7c3aed;
+      --accent-hover: #6d28d9;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .error-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      max-width: 440px;
+      width: 90%;
+      margin: 20px auto;
+      padding: 40px 32px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .error-code {
+      font-family: 'Poppins', sans-serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -2px;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 24px;
+    }
+
+    .reason-box {
+      background: rgba(124, 58, 237, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .reason-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .reason-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .reason-list li {
+      margin-bottom: 4px;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn-home:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="error-card">
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>We couldn't find the page or study route you were looking for.</p>
+
+    <div class="reason-box">
+      <div class="reason-title">Possible reasons for this error:</div>
+      <ul class="reason-list">
+        <li><strong>Typo in URL:</strong> The web address might contain a spelling error.</li>
+        <li><strong>Broken Link:</strong> The link you clicked may be outdated or incorrect.</li>
+        <li><strong>Moved Content:</strong> The resource, subject material, or view has been relocated.</li>
+      </ul>
+    </div>
+
+    <a href="/" class="btn-home">Return to Dashboard</a>
+  </div>
+</body>
+
+</html>
