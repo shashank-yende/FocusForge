@@ -1,5 +1,4 @@
 # FocusForge - Smart Study Planner & Productivity Suite
-https://github.com/shashank-yende/FocusForge/blob/114910c17751edec311855d4a4b4449463172ad7/public/logo.png
 ## Software Requirement Specification
 **Document Version:** 1.0.0  
 **Standard:** IEEE Std 830-1998 / ISO/IEC/IEEE 29148  
