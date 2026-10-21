@@ -1,5 +1,5 @@
-# Software Requirements Specification (SRS)
-## Project: FocusForge
+# Project: FocusForge - Smart Study Planner & Productivity Suite
+## Software Requirement Specification
 **Document Version:** 1.0.0  
 **Standard:** IEEE Std 830-1998 / ISO/IEC/IEEE 29148  
 **Date:** September 2026  
