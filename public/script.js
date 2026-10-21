@@ -1,12 +1,13 @@
 // Your web app's Firebase configuration
+// Use a placeholder or load from a secure config
 const firebaseConfig = {
-    apiKey: "AIzaSyCpaVyYgUIn9EpV_WAnM6BSkcSLfpYuQ4g",
-    authDomain: "focusforge-ce3c2.firebaseapp.com",
-    projectId: "focusforge-ce3c2",
-    storageBucket: "focusforge-ce3c2.firebasestorage.app",
-    messagingSenderId: "188880478250",
-    appId: "1:188880478250:web:318ba89d0148db879de353",
-    measurementId: "G-HEGLW7Y2CC"
+  apiKey: window.env?.FIREBASE_API_KEY || "YOUR_API_KEY_HERE",
+  authDomain: "focusforge-ce3c2.firebaseapp.com",
+  projectId: "focusforge-ce3c2",
+  storageBucket: "focusforge-ce3c2.firebasestorage.app",
+  messagingSenderId: "188880478250",
+  appId: "1:188880478250:web:318ba89d0148db879de353",
+  measurementId: "G-HEGLW7Y2CC"
 };
 
 // Initialize Firebase using the compat method
