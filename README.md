@@ -1,4 +1,4 @@
-# Project: FocusForge - Smart Study Planner & Productivity Suite
+# FocusForge - Smart Study Planner & Productivity Suite
 ## Software Requirement Specification
 **Document Version:** 1.0.0  
 **Standard:** IEEE Std 830-1998 / ISO/IEC/IEEE 29148  
